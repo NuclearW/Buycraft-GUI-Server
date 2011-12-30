@@ -29,6 +29,6 @@ public class PacketOpenBrowser extends AddonPacket {
 		if(this.url == null) {
 			this.url = "null";
 		}
-		ouputStream.writeString(this.url);
+		out.writeString(this.url);
 	}
 }
