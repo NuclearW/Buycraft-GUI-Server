@@ -10,6 +10,7 @@ import net.buycraft.api.Api;
 import net.buycraft.api.ApiResponse;
 import net.buycraft.gui.GuiManager;
 import net.buycraft.gui.PackageBindingDelegate;
+import net.buycraft.gui.PacketOpenBrowser;
 import net.buycraft.gui.ScreenManager;
 import net.buycraft.gui.listeners.ButtonListener;
 import net.buycraft.util.Language;
@@ -21,6 +22,7 @@ import org.bukkit.event.Event.Type;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.getspout.spoutapi.SpoutManager;
+import org.getspout.spoutapi.io.AddonPacket;
 import org.getspout.spoutapi.keyboard.Keyboard;
 import org.json.JSONArray;
 
@@ -97,6 +99,7 @@ public class Buycraft extends JavaPlugin
 		try
 		{
 			// -- Start GUI
+			AddonPacket.register(PacketOpenBrowser.class, "BuycraftClient");
 			SpoutManager.getKeyBindingManager().registerBinding("toggle_gui", Keyboard.KEY_B, "Toggles the GUI", new PackageBindingDelegate(this), this);
 			guiManager = new GuiManager(new ScreenManager());
 			// -- End GUI

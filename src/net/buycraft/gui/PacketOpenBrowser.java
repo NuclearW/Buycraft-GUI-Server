@@ -1,47 +1,27 @@
 package net.buycraft.gui;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import org.getspout.spoutapi.io.AddonPacket;
+import org.getspout.spoutapi.io.SpoutInputStream;
+import org.getspout.spoutapi.io.SpoutOutputStream;
+import org.getspout.spoutapi.player.SpoutPlayer;
 
-import org.getspout.spoutapi.packet.PacketType;
-import org.getspout.spoutapi.packet.SpoutPacket;
-
-public class PacketOpenBrowser implements SpoutPacket {
+public class PacketOpenBrowser extends AddonPacket {
 	
-	String url;
-	int playerId;
+	public String url;
 	
 	public PacketOpenBrowser(String url) {
 		this.url = url;
 	}
 
-	public void failure(int id) {
-
-	}
-
-	public int getNumBytes() {
-		return 0;
-	}
-
-	public PacketType getPacketType() {
-		return null;
-	}
-
-	public int getVersion() {
-		return 0;
-	}
-
-	public void readData(DataInputStream in) throws IOException {
+	public void read(SpoutInputStream in) {
 		
 	}
 
-	public void run(int PlayerId) {
-		
+	public void run(SpoutPlayer player) {
+
 	}
 
-	public void writeData(DataOutputStream out) throws IOException {
-		
-	}
+	public void write(SpoutOutputStream out) {
 
+	}
 }
