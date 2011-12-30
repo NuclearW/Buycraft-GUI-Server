@@ -37,6 +37,7 @@ public class Buycraft extends JavaPlugin
 {
 	// -- Start GUI
 	public GuiManager guiManager;
+	// TODO: Static set of some sort for putting names!
 	// -- End GUI
 	
 	public String version = "3.4";
