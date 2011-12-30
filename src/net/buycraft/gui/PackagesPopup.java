@@ -2,6 +2,7 @@ package net.buycraft.gui;
 
 import net.buycraft.Buycraft;
 
+import org.bukkit.entity.Player;
 import org.getspout.spoutapi.gui.Color;
 import org.getspout.spoutapi.gui.GenericButton;
 import org.getspout.spoutapi.gui.GenericGradient;
@@ -14,6 +15,7 @@ import org.getspout.spoutapi.player.SpoutPlayer;
 public class PackagesPopup extends GenericPopup {
 	
 	public Buycraft buycraft;
+	public Player player;
 	
 	public int screenWidth;
 	public int screenHeight;
@@ -21,6 +23,7 @@ public class PackagesPopup extends GenericPopup {
 	public PackagesPopup(Buycraft buycraft, SpoutPlayer player) {
 		
 		this.buycraft = buycraft;
+		this.player = player;
 		
 		screenWidth = player.getMainScreen().getWidth();
 		screenHeight = player.getMainScreen().getHeight();
@@ -31,7 +34,7 @@ public class PackagesPopup extends GenericPopup {
 		GenericTexture border = new GenericTexture();
 		GenericGradient gradient = new GenericGradient();
 		
-		PackageTree tree = new PackageTree(buycraft);
+		PackageTree tree = new PackageTree(buycraft, player);
 		
 		checkout.setText("Checkout");
 		checkout.setY(195).setX(150);
@@ -63,6 +66,7 @@ public class PackagesPopup extends GenericPopup {
 		// List which displays the packages
 		tree.setX(90).setY(50);
 		tree.setWidth(250).setHeight(125);
+		GuiManager.getScreenManager().setPackageTree(player, tree);
 		
 		this.setTransparent(true);
 		this.attachWidget(buycraft, border);

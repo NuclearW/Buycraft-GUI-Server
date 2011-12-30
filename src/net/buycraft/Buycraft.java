@@ -8,7 +8,9 @@ import java.util.logging.Logger;
 
 import net.buycraft.api.Api;
 import net.buycraft.api.ApiResponse;
+import net.buycraft.gui.GuiManager;
 import net.buycraft.gui.PackageBindingDelegate;
+import net.buycraft.gui.ScreenManager;
 import net.buycraft.gui.listeners.ButtonListener;
 import net.buycraft.util.Language;
 import net.buycraft.util.Settings;
@@ -31,6 +33,10 @@ import org.json.JSONArray;
  */
 public class Buycraft extends JavaPlugin
 {
+	// -- Start GUI
+	public GuiManager guiManager;
+	// -- End GUI
+	
 	public String version = "3.4";
 	public String apiUrl = "http://api.buycraft.net/query";
 	
@@ -92,6 +98,7 @@ public class Buycraft extends JavaPlugin
 		{
 			// -- Start GUI
 			SpoutManager.getKeyBindingManager().registerBinding("toggle_gui", Keyboard.KEY_B, "Toggles the GUI", new PackageBindingDelegate(this), this);
+			guiManager = new GuiManager(new ScreenManager());
 			// -- End GUI
 			
 			// Load logger

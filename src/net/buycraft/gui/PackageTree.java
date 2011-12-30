@@ -3,6 +3,7 @@ package net.buycraft.gui;
 import net.buycraft.Buycraft;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.getspout.spoutapi.gui.GenericContainer;
 import org.getspout.spoutapi.gui.GenericLabel;
 import org.getspout.spoutapi.gui.GenericListWidget;
@@ -13,10 +14,12 @@ import org.json.JSONObject;
 
 public class PackageTree extends GenericContainer {
 	private Buycraft buycraft;
+	private Player player;
 	private GenericListWidget list;
 	
-	public PackageTree(Buycraft instance) {
+	public PackageTree(Buycraft instance, Player player) {
 		buycraft = instance;
+		this.player = player;
 
 		list = new GenericListWidget();
 		
@@ -58,5 +61,24 @@ public class PackageTree extends GenericContainer {
 		
 		this.setWidth(0).setHeight(0);
 		this.addChild(list);
+	}
+	
+	public String getPackageUrl(int index) {
+		try {
+			JSONArray packages = buycraft.packagesForSale;
+			JSONObject row = packages.getJSONObject(index);
+			String url = "http://buycraft.net/buy/" + this.buycraft.serverId + "/" + row.get("id") + "/" + this.player.getName();
+			return url;
+		} catch (JSONException e) {
+			e.printStackTrace();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int getSelectedPackageIndex() {
+		return list.getSelectedRow();
 	}
 }

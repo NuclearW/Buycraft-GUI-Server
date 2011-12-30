@@ -1,6 +1,8 @@
 package net.buycraft.gui.listeners;
 
 import net.buycraft.Buycraft;
+import net.buycraft.gui.GuiManager;
+import net.buycraft.gui.PackageTree;
 
 import org.getspout.spoutapi.event.screen.ButtonClickEvent;
 import org.getspout.spoutapi.event.screen.ScreenListener;
@@ -20,6 +22,13 @@ public class ButtonListener extends ScreenListener {
 		
 		if(button.getText().equals("Close")) {
 			player.getMainScreen().getActivePopup().close();
+		}
+		
+		if(button.getText().equals("Checkout")) {
+			PackageTree tree = GuiManager.getScreenManager().getPackageTree(player);
+			String url = tree.getPackageUrl(tree.getSelectedPackageIndex());
+			System.out.print(url);
+			//player.sendPacket(new PacketOpenBrowser(url));
 		}
 		
 		/*
