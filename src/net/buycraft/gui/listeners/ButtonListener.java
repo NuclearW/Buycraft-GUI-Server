@@ -28,6 +28,9 @@ public class ButtonListener extends ScreenListener {
 			PackageTree tree = GuiManager.getScreenManager().getPackageTree(player);
 			String url = tree.getPackageUrl(tree.getSelectedPackageIndex());
 			System.out.print(url);
+			// TODO: Check if user is in our "can handle" set
+			// TODO: Send the packet if they are!
+			// TODO: Popup with link that can be copied out if not?
 			//player.sendPacket(new PacketOpenBrowser(url));
 		}
 		
