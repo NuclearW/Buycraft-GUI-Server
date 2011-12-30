@@ -1,0 +1,8 @@
+name: Buycraft
+main: net.buycraft.Buycraft
+version: 0.1
+description: Spout GUI for the wonderful Buycraft Bukkit plugin
+authors: [Windwaker, lmc]
+database: false
+depend: [Spout]
+website: buycraft.net
